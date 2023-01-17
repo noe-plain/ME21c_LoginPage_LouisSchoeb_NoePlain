@@ -1,3 +1,10 @@
+fetch('./scripts/passwords.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        passwords = data;
+    });
+
 console.log(document.getElementById("from"));
 document.getElementById('form').addEventListener('submit', function (event) {
     // Überprüfet, ob alle Felder ausgefüllt sind
@@ -10,8 +17,6 @@ document.getElementById('form').addEventListener('submit', function (event) {
         alert("Bitte füllen Sie alle Felder aus!");
     }
 });
-
-//Passwort validierung
 
 password.oninput = function () {
     var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
@@ -30,8 +35,6 @@ password.oninput = function () {
     }
 }
 
-//Email validierung
-
 function validation() {
     console.log("1");
     let form = document.getElementById('form')
@@ -41,4 +44,37 @@ function validation() {
     const password = document.getElementById('password').value
     let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,5}$/
     console.log(email)
+
+    if (pattern.test(email)) {
+        form.classList.add('valid')
+        form.classList.remove('invalid')
+        for (let txtObject of document.querySelectorAll('input[type=text]')) {
+            txtObject.style.color = '#003300'
+        }
+        eval("var send_data = { firstname: '" + firstname + "', lastname: '" + lastname + "', email: '" + email + "', password: '" + password + "' }");
+        console.log("var send_data = { firstname: '" + firstname + "', lastname: '" + lastname + "', email: '" + email + "', password: '" + password + "' }");
+        console.log(send_data);
+        fetch('./scripts/create_user.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: '{ "firstname": "' + firstname + '", "lastname": "' + lastname + '", "email": "' + email + '", "password": "' + password + '" }'
+        })
+
+            .then(data => {
+                console.log('Success:', data);
+            })
+        /*  .catch((error) => {
+          console.error('Error:', error);
+          });*/
+        alert("User added")
+    } else {
+        form.classList.remove('valid')
+        form.classList.add('invalid')
+        for (let txtObject of document.querySelectorAll('input[type=text]')) {
+            txtObject.style.color = '#440000'
+        }
+        alert("Invalid input")
+    }
 }
