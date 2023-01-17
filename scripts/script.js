@@ -11,6 +11,8 @@ document.getElementById('form').addEventListener('submit', function (event) {
     }
 });
 
+//Passwort validierung
+
 password.oninput = function () {
     var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     if (password.value.length < 8) {
@@ -26,4 +28,17 @@ password.oninput = function () {
     } else {
         document.getElementById("passwordError").innerHTML = "";
     }
+}
+
+//Email validierung
+
+function validation() {
+    console.log("1");
+    let form = document.getElementById('form')
+    const email = document.getElementById('email').value
+    const firstname = document.getElementById('firstname').value
+    const lastname = document.getElementById('lastname').value
+    const password = document.getElementById('password').value
+    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,5}$/
+    console.log(email)
 }
