@@ -1,3 +1,16 @@
+console.log(document.getElementById("from"));
+document.getElementById('form').addEventListener('submit', function (event) {
+    // Überprüfet, ob alle Felder ausgefüllt sind
+    if (document.getElementById('firstname').value == '' ||
+        document.getElementById('lastname').value == '' ||
+        document.getElementById('email').value == '' ||
+        document.getElementById('password').value == '') {
+        // Verhindert, dass das Formular gesendet wird
+        event.preventDefault();
+        alert("Bitte füllen Sie alle Felder aus!");
+    }
+});
+
 password.oninput = function () {
     var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     if (password.value.length < 8) {
