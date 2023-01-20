@@ -299,7 +299,7 @@ article {
 
     nav {
         flex-direction: column;
-        padding: 15px 0;
+        padding: 15px 0px;
     }
 
     div#search {

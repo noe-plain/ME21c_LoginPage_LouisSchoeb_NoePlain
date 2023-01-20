@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loggin</title>
-
     <link rel="stylesheet" id="main-css" href="./styles/style.css" type="text/css" media="all">
     <link rel="icon" type="image/x-icon" href="https://noeplain.ch/wp-content/uploads/2022/11/Zeichenflaeche-1.png">
     <script src="scripts/script.js" defer></script>
@@ -36,31 +35,31 @@
     <article class="page">
         <h1>Erstelle ein Konto</h1>
         <div class="entry-content">
-            <form id="form" class="form">
+            <form id="form" class="form" autocomplete="on" onsubmit="validation(); return false">
                 <p>
                     <label>Vorname:</label>
                     <br>
-                    <input type="text" id="firstname" class="form-content"/>
+                    <input type="text" id="firstname" class="form-content">
                 </p>
                 <p>
                     <label>Nachname:</label>
                     <br>
-                    <input type="text" id="lastname" class="form-content"/>
+                    <input type="text" id="lastname" class="form-content">
                 </p>
                 <p>
                     <label>E-Mail:</label>
                     <br>
-                    <input type="text" name="" id="email" class="form-content"/>
+                    <input type="text" name="" id="email" class="form-content">
                 </p>
                 <p>
                     <label>Passwort:</label>
                     <br>
-                    <input type="password" id="password" class="form-content"/>
+                    <input type="password" id="password" class="form-content">
                 <p id="passwordError"></p>
                 </p>
 
                 <p>
-                    <input type="submit" value="Registrieren" class="submit button"/>
+                    <input type="submit" value="Registrieren" class="submit button">
                 </p>
             </form>
         </div>
